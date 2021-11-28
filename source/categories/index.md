@@ -1,0 +1,4 @@
+---
+type: "category"
+layout: "category"
+---
