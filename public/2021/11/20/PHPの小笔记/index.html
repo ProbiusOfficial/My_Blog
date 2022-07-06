@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Probius">
+
+
+
+
+
+<title>PHPの小笔记 | 探姬的博客</title>
+
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="探姬的博客" type="application/atom+xml">
+</head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <script src="//lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+    <script id="music" src="https://music.xingyaox.com/player.js" key="probius"></script>
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">探姬的Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/links">Link</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">探姬的Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/links">Link</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">PHPの小笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Probius</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 20, 2021&nbsp;&nbsp;1:28:11</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h2><h4 id="PHP-是一门弱类型语言"><a href="#PHP-是一门弱类型语言" class="headerlink" title="(PHP 是一门弱类型语言:"></a>(PHP 是一门弱类型语言:</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$x_int</span>=<span class="hljs-number">5</span>;<br><span class="hljs-variable">$y_int</span>=<span class="hljs-number">6</span>;<br><span class="hljs-variable">$txt_string</span>=<span class="hljs-string">&quot;Hello World!&quot;</span>;<br><span class="hljs-variable">$float_num</span>=<span class="hljs-number">4.0</span>;<br><span class="hljs-variable">$z</span>=<span class="hljs-variable">$x</span>+<span class="hljs-variable">$y</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$z</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="PHP的数据类型："><a href="#PHP的数据类型：" class="headerlink" title="PHP的数据类型："></a>PHP的数据类型：</h4><p><code>String（字符串 `` Integer（整型 `` Float（浮点型）``Boolean（布尔型）</code><br><code>Array（数组）``Object（对象）``NULL（空值）</code></p>
+<h4 id="PHP的类型比较："><a href="#PHP的类型比较：" class="headerlink" title="PHP的类型比较："></a>PHP的类型比较：</h4><ul>
+<li><p>松散比较：使用两个等号 <strong>==</strong> 比较，只比较值，不比较类型。</p>
+</li>
+<li><p>严格比较：用三个等号 <strong>===</strong> 比较，除了比较值，也比较类型。</p>
+<h4 id="PHP的常量："><a href="#PHP的常量：" class="headerlink" title="PHP的常量："></a>PHP的常量：</h4><p><code>bool define ( string $name , mixed $value [, bool $case_insensitive = false ] )</code><br>Eg：<code>define(&quot;GREETING&quot;, &quot;欢迎访问&quot;, true);</code>//true表示不区分大小写。<br><code>$GREETING</code>和<code>$greeting</code>都会输出“欢迎访问”。</p>
+<h4 id="PHP-变量作用域："><a href="#PHP-变量作用域：" class="headerlink" title="PHP 变量作用域："></a>PHP 变量作用域：</h4></li>
+<li><p>全局变量除了<strong>常规定义</strong>，可以在函数内部使用<code>global</code>关键词来定义一个全局变量。</p>
+</li>
+<li><p>php支持<code>static</code>关键词来定义静态局部变量。</p>
+<h4 id="PHP-超级全局变量"><a href="#PHP-超级全局变量" class="headerlink" title="PHP 超级全局变量"></a>PHP 超级全局变量</h4><p>PHP中预定义了几个超级全局变量（superglobals） ，这意味着它们在一个脚本的全部作用域中都可用。 你不需要特别说明，就可以在函数及类中使用。</p>
+</li>
+</ul>
+<p><strong>PHP 超级全局变量列表:</strong><br><code>$GLOBAL</code>   <code>$_SERVER</code>   <code>$_REQUEST</code>   <code>$_POST</code><br><code>$_GET</code>   <code>$_FILES</code>   <code>$_ENV</code>   <code>$_COOKIE</code>   <code>$_SESSION</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">//Example for $GLOBAL</span><br><span class="hljs-meta">&lt;?php</span> <br><span class="hljs-variable">$x</span> = <span class="hljs-number">75</span>; <br><span class="hljs-variable">$y</span> = <span class="hljs-number">25</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addition</span>(<span class="hljs-params"></span>) </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-variable">$GLOBALS</span>[<span class="hljs-string">&#x27;z&#x27;</span>] = <span class="hljs-variable">$GLOBALS</span>[<span class="hljs-string">&#x27;x&#x27;</span>] + <span class="hljs-variable">$GLOBALS</span>[<span class="hljs-string">&#x27;y&#x27;</span>]; <br>&#125;<br>addition(); <br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$z</span>; <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>$_SERVER </code>是一个包含了诸如头<strong>信息(header)<strong>、</strong>路径(path)<strong>、以及</strong>脚本位置(script locations)<strong>等等信息的</strong>数组</strong>。这个数组中的项目由 Web 服务器创建。(不能保证每个服务器都提供全部项目)；(以下为表格：)</p>
+<table>
+<thead>
+<tr>
+<th>$_SERVER[‘PHP_SELF’]</th>
+<th>当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a target="_blank" rel="noopener" href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 /test.php/foo.bar。__FILE</em>_ 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$_SERVER[‘GATEWAY_INTERFACE’]</td>
+<td>服务器使用的 CGI 规范的版本；例如，”CGI/1.1”。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_ADDR’]</td>
+<td>当前运行脚本所在的服务器的 IP 地址。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_NAME’]</td>
+<td>当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_SOFTWARE’]</td>
+<td>服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache/2.2.24)</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_PROTOCOL’]</td>
+<td>请求页面时通信协议的名称和版本。例如，”HTTP/1.0”。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘REQUEST_METHOD’]</td>
+<td>访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘REQUEST_TIME’]</td>
+<td>请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)</td>
+</tr>
+<tr>
+<td>$_SERVER[‘QUERY_STRING’]</td>
+<td>query string（查询字符串），如果有的话，通过它进行页面访问。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘HTTP_ACCEPT’]</td>
+<td>当前请求头中 Accept: 项的内容，如果存在的话。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘HTTP_ACCEPT_CHARSET’]</td>
+<td>当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,*,utf-8”。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘HTTP_HOST’]</td>
+<td>当前请求头中 Host: 项的内容，如果存在的话。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘HTTP_REFERER’]</td>
+<td>引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)</td>
+</tr>
+<tr>
+<td>$_SERVER[‘HTTPS’]</td>
+<td>如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘REMOTE_ADDR’]</td>
+<td>浏览当前页面的用户的 IP 地址。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘REMOTE_HOST’]</td>
+<td>浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘REMOTE_PORT’]</td>
+<td>用户机器上连接到 Web 服务器所使用的端口号。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SCRIPT_FILENAME’]</td>
+<td>当前执行脚本的绝对路径。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_ADMIN’]</td>
+<td>该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#115;&#x6f;&#x6d;&#101;&#x6f;&#x6e;&#101;&#x40;&#114;&#117;&#110;&#111;&#x6f;&#x62;&#x2e;&#99;&#111;&#x6d;">&#115;&#x6f;&#x6d;&#101;&#x6f;&#x6e;&#101;&#x40;&#114;&#117;&#110;&#111;&#x6f;&#x62;&#x2e;&#99;&#111;&#x6d;</a>)</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_PORT’]</td>
+<td>Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SERVER_SIGNATURE’]</td>
+<td>包含了服务器版本和虚拟主机名的字符串。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘PATH_TRANSLATED’]</td>
+<td>当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SCRIPT_NAME’]</td>
+<td>包含当前脚本的路径。这在页面需要指向自己时非常有用。<strong>FILE</strong> 常量包含当前脚本(例如包含文件)的完整路径和文件名。</td>
+</tr>
+<tr>
+<td>$_SERVER[‘SCRIPT_URI’]</td>
+<td>URI 用来指定要访问的页面。例如 “/index.html”。</td>
+</tr>
+</tbody></table>
+<h4 id="PHP-魔术常量"><a href="#PHP-魔术常量" class="headerlink" title="PHP 魔术常量"></a>PHP 魔术常量</h4><table>
+<thead>
+<tr>
+<th><strong><strong>LINE</strong></strong></th>
+<th>文件中的当前行号。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><strong>FILE</strong></strong></td>
+<td>文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。</td>
+</tr>
+<tr>
+<td>自 PHP 4.0.2 起，<strong>FILE</strong> 总是包含一个绝对路径（如果是符号连接，则是解析后的绝对路径），而在此之前的版本有时会包含一个相对路径。</td>
+<td></td>
+</tr>
+<tr>
+<td>实例:</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><strong>DIR</strong></strong></td>
+<td>文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。</td>
+</tr>
+<tr>
+<td>它等价于 dirname(<strong>FILE</strong>)。除非是根目录，否则目录中名不包括末尾的斜杠。（PHP 5.3.0中新增）</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><strong>FUNCTION</strong></strong></td>
+<td>起本常量返回该函数被定义时的名字</td>
+</tr>
+<tr>
+<td><strong><strong>CLASS</strong></strong></td>
+<td>自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。</td>
+</tr>
+<tr>
+<td><strong><strong>TRAIT</strong></strong></td>
+<td>????</td>
+</tr>
+<tr>
+<td><strong><strong>METHOD</strong></strong></td>
+<td>返回该方法被定义时的名字（区分大小写）。PHP 5.0.0 新加</td>
+</tr>
+<tr>
+<td><strong><strong>NAMESPACE</strong></strong></td>
+<td>当前命名空间的名称（区分大小写）。此常量是在编译时定义的（PHP 5.3.0 新增）。</td>
+</tr>
+</tbody></table>
+<h4 id="PHP-字符串变量"><a href="#PHP-字符串变量" class="headerlink" title="PHP 字符串变量"></a>PHP 字符串变量</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$txt1</span>=<span class="hljs-string">&quot;Hello world!&quot;</span>;<br><span class="hljs-variable">$txt2</span>=<span class="hljs-string">&quot;What a nice day!&quot;</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$txt1</span> . <span class="hljs-string">&quot; &quot;</span> . <span class="hljs-variable">$txt2</span>;<br><span class="hljs-meta">?&gt;</span><br><span class="hljs-comment">//Output:&quot;Hello world! What a nice day!&quot;</span><br></code></pre></td></tr></table></figure>
+<p>PHP同样有<code>strlen()</code>函数（<br><code>strpos()</code>——查找字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">echo</span> strpos(<span class="hljs-string">&quot;Hello world!&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>);<br><span class="hljs-meta">?&gt;</span><br><span class="hljs-comment">//Output:&quot;6&quot;(7-1)</span><br></code></pre></td></tr></table></figure>
+<h4 id="PHP-数组排序"><a href="#PHP-数组排序" class="headerlink" title="PHP 数组排序"></a>PHP 数组排序</h4><ul>
+<li><code>**sort()**</code> - 对数组进行升序排列</li>
+<li><code>**rsort()**</code> - 对数组进行降序排列</li>
+<li><code>**asort()**</code> - 根据关联数组的值，对数组进行升序排列</li>
+<li><code>**ksort()**</code> - 根据关联数组的键，对数组进行升序排列</li>
+<li><code>**arsort() **</code>- 根据关联数组的值，对数组进行降序排列</li>
+<li><code>**krsort() **</code>- 根据关联数组的键，对数组进行降序排列<h4 id="PHP命名空间"><a href="#PHP命名空间" class="headerlink" title="PHP命名空间"></a>PHP命名空间</h4><h4 id="PHP面向对象"><a href="#PHP面向对象" class="headerlink" title="PHP面向对象"></a>PHP面向对象</h4></li>
+</ul>
+<hr>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Probius</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://hexo.probius.xyz/2021/11/20/PHP%E3%81%AE%E5%B0%8F%E7%AC%94%E8%AE%B0/">https://hexo.probius.xyz/2021/11/20/PHP%E3%81%AE%E5%B0%8F%E7%AC%94%E8%AE%B0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/PHP/"># PHP</a>
+                    
+                        <a href="/tags/language/"># language</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/11/20/bit-operation/">bit_operation</a>
+            
+            
+            <a class="next" rel="next" href="/2021/11/20/HelloWorld/">HelloWorld</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Probius | Powered by <a href="https://hexo.io" target="_blank">Hexo  </a> <a href="  https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021017506号</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
